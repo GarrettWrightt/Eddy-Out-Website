@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eddy Out Environmental | Sustainability &amp; EPR Consulting, Bozeman MT</title>
+<meta name="description" content="Emissions accounting, multi-year reduction planning, and EPR compliance for manufacturers, municipalities, and family-run operations. Bozeman, Montana." />
+<link rel="icon" href="eddy-out-logo.png" />
+<meta property="og:title" content="Eddy Out Environmental" />
+<meta property="og:description" content="Serious environmental work, scaled to fit your organization." />
+<meta property="og:image" content="home-hero.jpeg" />
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin:0; padding:0; background:#FAF8F3; }
+  * { box-sizing:border-box; }
+  a { color:#147C8B; text-decoration:none; }
+  a:hover { color:#0A2F5E; }
+  ::selection { background:#00A24A; color:#fff; }
+</style>
+</helmet>
+<div style="font-family:'Public Sans',system-ui,sans-serif;color:#152532;background:#FAF8F3;min-height:100vh;overflow-x:hidden">
+
+  <header style="position:sticky;top:0;z-index:50;background:rgba(250,248,243,0.94);backdrop-filter:blur(10px);border-bottom:1px solid #E3DCCD">
+    <div style="max-width:1240px;margin:0 auto;padding:12px 32px;display:flex;align-items:center;gap:24px">
+      <a href="#" onClick="{{ goHome }}" style="display:flex;align-items:center;flex:0 0 auto">
+        <img src="eddy-out-logo.png" alt="Eddy Out Sustainability Consulting" style="height:42px;width:auto;display:block" />
+      </a>
+      <nav style="margin-left:auto;display:flex;align-items:center;gap:2px;flex-wrap:wrap">
+        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="5">
+          <a href="#" onClick="{{ item.go }}" style="font-size:14.5px;font-weight:600;letter-spacing:0.01em;padding:9px 13px;border-radius:6px;color:{{ item.color }}" style-hover="background:#EFE9DC;color:#0A2F5E">{{ item.label }}</a>
+        </sc-for>
+        <a href="#" onClick="{{ goContact }}" style="margin-left:12px;font-size:14.5px;font-weight:700;padding:11px 20px;border-radius:6px;background:#00A24A;color:#fff" style-hover="background:#0A2F5E;color:#fff">Book a free consult</a>
+      </nav>
+    </div>
+  </header>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <main>
+    <section style="position:relative;min-height:640px;display:flex;align-items:flex-end;background:#0A2F5E">
+      <img src="home-hero.jpeg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55" />
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,47,92,0.55) 0%,rgba(10,47,92,0.25) 40%,rgba(10,47,92,0.94) 100%)"></div>
+      <div style="position:relative;max-width:1240px;margin:0 auto;padding:120px 32px 84px;width:100%">
+        <div style="display:inline-flex;align-items:center;gap:9px;padding:7px 14px;border:1px solid rgba(255,255,255,0.35);border-radius:100px;color:#fff;font-size:12.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:26px">
+          <span style="width:7px;height:7px;border-radius:50%;background:#00D165;display:block"></span>
+          Now taking 2027 EPR registrations
+        </div>
+        <h1 style="font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(42px,5.6vw,74px);line-height:1.02;letter-spacing:-0.028em;color:#fff;margin:0;max-width:17ch;text-wrap:balance">Serious environmental work, scaled to fit your organization.</h1>
+        <p style="font-size:20px;line-height:1.55;color:rgba(255,255,255,0.88);max-width:60ch;margin:24px 0 0;text-wrap:pretty">We handle emissions accounting, multi-year reduction planning, and EPR filings for manufacturers, municipalities, and family-run operations. You get numbers that hold up, filings that clear, and a clear picture of what to do next, explained in plain language, start to finish.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:36px">
+          <a href="#" onClick="{{ goContact }}" style="font-size:16px;font-weight:700;padding:16px 30px;border-radius:7px;background:#00A24A;color:#fff" style-hover="background:#fff;color:#0A2F5E">Book a free consult</a>
+          <a href="#" onClick="{{ goEpr }}" style="font-size:16px;font-weight:700;padding:16px 30px;border-radius:7px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.45);color:#fff" style-hover="background:#fff;color:#0A2F5E">Am I on the hook for EPR?</a>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#0A2F5E;border-top:1px solid rgba(255,255,255,0.14)">
+      <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding-top:26px">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#5FD9C0">{{ bandTitle }}</div>
+          <div style="display:flex;gap:7px">
+            <sc-for list="{{ bandDots }}" as="d" hint-placeholder-count="4">
+              <sc-if value="{{ d.isActive }}" hint-placeholder-val="{{ false }}">
+                <button type="button" onClick="{{ d.go }}" aria-label="{{ d.label }}" style="border:none;padding:0;cursor:pointer;height:4px;width:28px;border-radius:2px;background:#00D165"></button>
+              </sc-if>
+              <sc-if value="{{ d.isInactive }}" hint-placeholder-val="{{ true }}">
+                <button type="button" onClick="{{ d.go }}" aria-label="{{ d.label }}" style="border:none;padding:0;cursor:pointer;height:4px;width:14px;border-radius:2px;background:rgba(255,255,255,0.3)"></button>
+              </sc-if>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));transition:opacity .35s ease;opacity:{{ bandOpacity }};min-height:170px">
+          <sc-for list="{{ bandItems }}" as="b" hint-placeholder-count="3">
+            <div style="padding:26px 34px 36px {{ b.padLeft }};border-right:{{ b.border }}">
+              <div style="font-family:Archivo,sans-serif;font-size:44px;font-weight:800;color:#00D165;letter-spacing:-0.03em;line-height:1">{{ b.figure }}</div>
+              <div style="color:rgba(255,255,255,0.78);font-size:15px;margin-top:8px;line-height:1.45">{{ b.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1240px;margin:0 auto;padding:104px 32px 20px">
+      <div style="font-size:12.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#147C8B">What we do</div>
+      <h2 style="font-family:Archivo,sans-serif;font-weight:700;font-size:clamp(32px,3.6vw,46px);line-height:1.08;letter-spacing:-0.025em;color:#0A2F5E;margin:14px 0 0;max-width:20ch">We do our best work when we understand your whole picture.</h2>
+      <p style="font-size:18px;line-height:1.6;color:#4A5A66;max-width:62ch;margin:18px 0 0;text-wrap:pretty">So we start by scoping it with you, then quote only what you actually need. These are the five areas we work in most.</p>
+    </section>
+
+    <section style="max-width:1240px;margin:0 auto;padding:44px 32px 100px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
+        <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="4">
+          <div style="background:#fff;border:1px solid #E7E0D1;border-radius:12px;padding:32px 28px 28px;display:flex;flex-direction:column;gap:14px;transition:transform .18s ease,border-color .18s ease" style-hover="border-color:#00A24A;transform:translateY(-3px)">
+            <div style="width:38px;height:4px;border-radius:2px;background:#00A24A"></div>
+            <div style="font-family:Archivo,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A94A0">{{ p.kicker }}</div>
+            <h3 style="font-family:Archivo,sans-serif;font-size:23px;font-weight:700;letter-spacing:-0.02em;color:#0A2F5E;margin:0;line-height:1.18">{{ p.title }}</h3>
+            <p style="font-size:15.5px;line-height:1.6;color:#4A5A66;margin:0;flex:1;text-wrap:pretty">{{ p.body }}</p>
+            <a href="#" onClick="{{ p.go }}" style="font-size:14.5px;font-weight:700;color:#00A24A;margin-top:6px" style-hover="color:#0A2F5E">{{ p.link }} →</a>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="background:#0F3E52">
+      <div style="max-width:1240px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));align-items:stretch">
+        <div style="padding:88px 56px 88px 0">
+          <div style="font-size:12.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#5FD9C0">Why Eddy Out</div>
+          <h2 style="font-family:Archivo,sans-serif;font-weight:700;font-size:clamp(30px,3.4vw,44px);line-height:1.1;letter-spacing:-0.025em;color:#fff;margin:14px 0 0;text-wrap:balance">We work on the floor, not the top floor.</h2>
+          <p style="font-size:17.5px;line-height:1.65;color:rgba(255,255,255,0.84);margin:22px 0 0;text-wrap:pretty">We love working with companies that are already trying to do the right thing and just need someone to prove it with numbers. Our job is to hand you data that makes sense. Data that saves you money, grows your customer base, and keeps you compliant, all inside the budget you actually have.</p>
+          <p style="font-size:17.5px;line-height:1.65;color:rgba(255,255,255,0.84);margin:18px 0 0;text-wrap:pretty">A GHG inventory shouldn't cost more than the boiler it tells you to replace. Every reduction strategy we write has a payback number attached. If it doesn't help your bottom line, it doesn't go in the report.</p>
+          <ul style="list-style:none;padding:0;margin:30px 0 0;display:flex;flex-direction:column;gap:13px">
+            <sc-for list="{{ whyPoints }}" as="w" hint-placeholder-count="4">
+              <li style="display:flex;gap:13px;align-items:flex-start;color:#fff;font-size:16px;line-height:1.5">
+                <span style="flex:0 0 auto;width:20px;height:20px;border-radius:50%;background:#00A24A;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;margin-top:2px">✓</span>
+                {{ w }}
+              </li>
+            </sc-for>
+          </ul>
+          <a href="#" onClick="{{ goWho }}" style="display:inline-block;margin-top:34px;font-size:15.5px;font-weight:700;padding:14px 26px;border-radius:7px;background:#fff;color:#0F3E52" style-hover="background:#00A24A;color:#fff">Meet the team</a>
+        </div>
+        <div style="position:relative;min-height:520px">
+          <img src="waterfall.jpeg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1240px;margin:0 auto;padding:100px 32px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap">
+        <div>
+          <div style="font-size:12.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#147C8B">Results</div>
+          <h2 style="font-family:Archivo,sans-serif;font-weight:700;font-size:clamp(30px,3.4vw,44px);line-height:1.1;letter-spacing:-0.025em;color:#0A2F5E;margin:14px 0 0">What clients actually got.</h2>
+        </div>
+        <a href="#" onClick="{{ goProjects }}" style="font-size:15px;font-weight:700;color:#00A24A" style-hover="color:#0A2F5E">See all projects →</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:38px">
+        <sc-for list="{{ results }}" as="r" hint-placeholder-count="4">
+          <div style="background:#EFE9DC;border-radius:12px;padding:30px 26px">
+            <div style="font-family:Archivo,sans-serif;font-size:40px;font-weight:800;color:#0A2F5E;letter-spacing:-0.03em;line-height:1">{{ r.stat }}</div>
+            <div style="font-size:15.5px;line-height:1.5;color:#3C4C58;margin-top:10px">{{ r.label }}</div>
+            <div style="font-size:13px;color:#8A8272;margin-top:14px;font-style:italic">{{ r.who }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+    </section>
+
+    <section style="position:relative;background:#0A2F5E">
+      <img src="creek.jpeg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.3" />
+      <div style="position:relative;max-width:900px;margin:0 auto;padding:96px 32px;text-align:center">
+        <h2 style="font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(32px,4vw,50px);line-height:1.08;letter-spacing:-0.028em;color:#fff;margin:0;text-wrap:balance">Let's find something that works for you.</h2>
+        <p style="font-size:18.5px;line-height:1.6;color:rgba(255,255,255,0.86);margin:20px auto 0;max-width:58ch;text-wrap:pretty">Tell us what you're facing: a deadline, an investor question, a utility bill that keeps climbing. We'll tell you straight whether you need us, and what it would cost.</p>
+        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px">
+          <a href="#" onClick="{{ goContact }}" style="font-size:16px;font-weight:700;padding:16px 30px;border-radius:7px;background:#00A24A;color:#fff" style-hover="background:#fff;color:#0A2F5E">Book a free consult</a>
+          <a href="mailto:Garrett@eddyoutenv.com" style="font-size:16px;font-weight:700;padding:16px 30px;border-radius:7px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.45);color:#fff" style-hover="background:#fff;color:#0A2F5E">Email Garrett</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isWho }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="position:relative;min-height:420px;display:flex;align-items:flex-end;background:#0A2F5E">
+      <img src="who-hero.jpeg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.5" />
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,47,92,0.4),rgba(10,47,92,0.9))"></div>
+      <div style="position:relative;max-width:1240px;margin:0 auto;padding:100px 32px 64px;width:100%">
+        <h1 style="font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(38px,5vw,64px);line-height:1.03;letter-spacing:-0.028em;color:#fff;margin:0">Who we are</h1>
+        <p style="font-size:19px;line-height:1.55;color:rgba(255,255,255,0.88);max-width:62ch;margin:18px 0 0;text-wrap:pretty">Founded on the idea of protecting what matters most: our environment, our communities, and your business's future.</p>
+      </div>
+    </section>
+
+    <section style="max-width:1240px;margin:0 auto;padding:88px 32px 40px">
+      <h2 style="font-family:Archivo,sans-serif;font-weight:700;font-size:clamp(28px,3.4vw,42px);line-height:1.1;letter-spacing:-0.025em;color:#0A2F5E;margin:0;max-width:22ch;text-wrap:balance">We like the companies that are already trying.</h2>
+      <p style="font-size:18.5px;line-height:1.65;color:#4A5A66;margin:20px 0 0;max-width:70ch;text-wrap:pretty">Our favorite clients aren't the ones with a glossy ESG department. They're the operations manager who already swapped the lighting, the founder who won't ship in mixed plastic, the plant that fixed its steam traps because it was the right thing to do. They just need someone to put real numbers behind it. Numbers that save money, win customers, and satisfy a regulator, without blowing up the budget.</p>
+    </section>
+
+    <section style="max-width:1240px;margin:0 auto;padding:20px 32px 88px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:56px">
+      <div>
+        <h3 style="font-family:Archivo,sans-serif;font-weight:700;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:#0A2F5E;margin:0">Sustainability isn't one-size-fits-all.</h3>
+        <p style="font-size:17px;line-height:1.68;color:#4A5A66;margin:16px 0 0;text-wrap:pretty">Every organization faces different constraints: an old plant, a thin margin, a supplier who won't return emails. We sit down with your data, your operations lead, and your budget, and build a strategy that fits all three.</p>
+        <p style="font-size:17px;line-height:1.68;color:#4A5A66;margin:14px 0 0;text-wrap:pretty">In-depth emissions analysis, compliance support, funding strategies, stakeholder engagement. We're here to think through the complexity with you and stay in it until it's handled.</p>
+      </div>
+      <div>
+        <h3 style="font-family:Archivo,sans-serif;font-weight:700;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:#0A2F5E;margin:0">Commitment to a brighter future.</h3>
+        <p style="font-size:17px;line-height:1.68;color:#4A5A66;margin:16px 0 0;text-wrap:pretty">Financial, social, and environmental growth aren't just compatible. They're inseparable. Economic success and environmental responsibility go hand in hand.</p>
+        <p style="font-size:17px;line-height:1.68;color:#4A5A66;margin:14px 0 0;text-wrap:pretty">We help organizations drive profitability through sustainability: reducing costs, securing funding, and building brand value while lowering emissions and improving resource efficiency.</p>
+      </div>
+    </section>
+
+    <section style="background:#EFE9DC">
+      <div style="max-width:1240px;margin:0 auto;padding:80px 32px">
+        <h2 style="font-family:Archivo,sans-serif;font-weight:700;font-size:34px;letter-spacing:-0.025em;color:#0A2F5E;margin:0 0 34px">Our team</h2>
+
+        <div style="background:#fff;border:1px solid #E1D9C6;border-radius:14px;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-bottom:22px">
+          <div style="position:relative;min-height:420px">
+            <img src="garrett-skiing.jpeg" alt="Garrett skinning up a Colorado couloir at sunrise" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+          </div>
+          <div style="padding:42px 40px 44px;display:flex;flex-direction:column;justify-content:center">
+            <div style="font-family:Archivo,sans-serif;font-size:28px;font-weight:700;color:#0A2F5E;letter-spacing:-0.02em">Garrett</div>
+            <div style="font-size:15px;font-weight:600;color:#00A24A;margin-top:4px">Founder &amp; Principal Consultant</div>
+            <p style="font-size:17px;line-height:1.65;color:#4A5A66;margin:20px 0 0;text-wrap:pretty">Yes, that's a photo of Garrett skiing instead of a headshot. It's on purpose. This is the reason he does the work. Snowpack, water, and the seasons that depend on them are the whole point, and he'd like to keep skiing on them for a while yet.</p>
+            <p style="font-size:17px;line-height:1.65;color:#4A5A66;margin:14px 0 0;text-wrap:pretty">He leads emissions accounting, EPR strategy, and procurement work at Eddy Out, and wrote a community sustainable procurement guide now in use beyond the town it was built for. He's happiest on a plant floor with a utility bill in one hand and a meter reading in the other.</p>
+            <a href="mailto:Garrett@eddyoutenv.com" style="margin-top:24px;font-size:15.5px;font-weight:700;color:#00A24A;align-self:flex-start" style-hover="color:#0A2F5E">Garrett@eddyoutenv.com →</a>
+          </div>
+        </div>
+
+        <div style="background:#fff;border:1px solid #E1D9C6;border-radius:14px;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+          <div style="padding:42px 40px 44px;display:flex;flex-direction:column;justify-content:center;order:1">
+            <div style="font-family:Archivo,sans-serif;font-size:28px;font-weight:700;color:#0A2F5E;letter-spacing:-0.02em">Hazel Baur</div>
+            <div style="font-size:15px;font-weight:600;color:#00A24A;margin-top:4px">Associate Consultant</div>
+            <p style="font-size:17px;line-height:1.65;color:#4A5A66;margin:20px 0 0;text-wrap:pretty">Hazel's sustainability work runs through food. As a Sustainable Food and Bioenergy Systems major at Montana State University, she thinks in whole systems: where a thing comes from, what it costs to move, and what's left over when it's done.</p>
+            <p style="font-size:17px;line-height:1.65;color:#4A5A66;margin:14px 0 0;text-wrap:pretty">She handles project support across our engagements and is building Green Forks, a sustainable restaurant certification for Bozeman. Her focus is sustainable food sourcing, and her connections in the local restaurant community mean the improvements she recommends are ones kitchens can actually make. Outside of work she's hiking, snowboarding, climbing, anything that keeps her outside.</p>
+            <a href="https://www.greenforksbozeman.com" style="margin-top:24px;font-size:15.5px;font-weight:700;color:#00A24A;align-self:flex-start" style-hover="color:#0A2F5E">greenforksbozeman.com →</a>
+          </div>
+          <div style="position:relative;min-height:420px;order:2">
+            <img src="hazel.jpeg" alt="Hazel at Trail Crest, Sequoia National Park" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isServices }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="position:relative;min-height:420px;display:flex;align-items:flex-end;background:#0A2F5E">
+      <img src="services-hero.jpeg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.5" />
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,47,92,0.4),rgba(10,47,92,0.9))"></div>
+      <div style="position:relative;max-width:1240px;margin:0 auto;padding:100px 32px 64px;width:100%">
+        <h1 style="font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(38px,5vw,64px);line-height:1.03;letter-spacing:-0.028em;color:#fff;margin:0">What we offer</h1>
+        <p style="font-size:19px;line-height:1.55;color:rgba(255,255,255,0.88);max-width:62ch;margin:18px 0 0;text-wrap:pretty">Scoped to what you actually need, whether that's an ongoing partnership or help with one project.</p>
+      </div>
+    </section>
+
+    <sc-for list="{{ services }}" as="s" hint-placeholder-count="3">
+      <section style="border-bottom:1px solid #E3DCCD;background:{{ s.bg }}">
+        <div style="max-width:1240px;margin:0 auto;padding:78px 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:56px;align-items:start">
+          <div>
+            <div style="font-size:12.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#147C8B">{{ s.kicker }}</div>
+            <h2 style="font-family:Archivo,sans-serif;font-weight:700;font-size:clamp(28px,3.2vw,40px);line-height:1.1;letter-spacing:-0.025em;color:#0A2F5E;margin:14px 0 0;text-wrap:balance">{{ s.title }}</h2>
+            <p style="font-size:17px;line-height:1.65;color:#4A5A66;margin:18px 0 0;text-wrap:pretty">{{ s.body }}</p>
+            <a href="#" onClick="{{ s.go }}" style="display:inline-block;margin-top:26px;font-size:15px;font-weight:700;padding:13px 24px;border-radius:7px;background:#0A2F5E;color:#fff" style-hover="background:#00A24A;color:#fff">{{ s.cta }}</a>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <sc-for list="{{ s.items }}" as="it" hint-placeholder-count="4">
+              <div style="background:#fff;border:1px solid #E7E0D1;padding:24px 26px;display:flex;gap:18px;align-items:flex-start">
+                <span style="font-family:Archivo,sans-serif;font-size:13px;font-weight:800;color:#00A24A;margin-top:4px;flex:0 0 24px">{{ it.n }}</span>
+                <div>
+                  <div style="font-family:Archivo,sans-serif;font-size:18px;font-weight:700;color:#0A2F5E;line-height:1.25">{{ it.h }}</div>
+                  <p style="font-size:15.5px;line-height:1.6;color:#4A5A66;margin:8px 0 0;text-wrap:pretty">{{ it.p }}</p>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+    </sc-for>
+
+    <section style="max-width:1240px;margin:0 auto;padding:88px 32px;text-align:center">
+      <h2 style="font-family:Archivo,sans-serif;font-weight:700;font-size:38px;letter-spacing:-0.025em;color:#0A2F5E;margin:0;text-wrap:balance">Not sure which of these you need?</h2>
+      <p style="font-size:18px;line-height:1.6;color:#4A5A66;margin:16px auto 30px;max-width:56ch">That's the call. Thirty minutes, no charge, and you'll leave knowing what's actually required of you and what isn't.</p>
+      <a href="#" onClick="{{ goContact }}" style="display:inline-block;font-size:16px;font-weight:700;padding:16px 30px;border-radius:7px;background:#00A24A;color:#fff" style-hover="background:#0A2F5E;color:#fff">Book a free consult</a>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isEpr }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="background:#0A2F5E;padding:88px 0 0">
+      <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+        <div style="display:inline-block;padding:7px 14px;border:1px solid rgba(255,255,255,0.35);border-radius:100px;color:#5FD9C0;font-size:12.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Extended Producer Responsibility</div>
+        <h1 style="font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(38px,5.2vw,68px);line-height:1.03;letter-spacing:-0.028em;color:#fff;margin:22px 0 0;max-width:19ch;text-wrap:balance">Let's get you compliant, together.</h1>
+        <p style="font-size:19.5px;line-height:1.58;color:rgba(255,255,255,0.86);max-width:64ch;margin:22px 0 0;text-wrap:pretty">If you sell packaged goods into California, Colorado, Maine, Maryland, Minnesota, Oregon, or Washington, extended producer responsibility probably applies to you. It's a lot to keep straight, and you don't have to figure it out alone. We'll walk your obligations with you, state by state and stream by stream, and handle the filings from there.</p>
+        <a href="#" onClick="{{ goContact }}" style="display:inline-block;margin-top:32px;font-size:16px;font-weight:700;padding:16px 30px;border-radius:7px;background:#00A24A;color:#fff" style-hover="background:#fff;color:#0A2F5E">Start with a free obligation check</a>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;margin-top:56px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.18);border-bottom:none;border-radius:12px 12px 0 0;overflow:hidden">
+          <div style="background:#0A2F5E;padding:30px 28px">
+            <div style="font-family:Archivo,sans-serif;font-size:38px;font-weight:800;color:#00D165;letter-spacing:-0.03em;line-height:1">$1,000,000</div>
+            <div style="color:rgba(255,255,255,0.78);font-size:14.5px;margin-top:8px;line-height:1.45">California's revenue floor, measured on California sales alone, the lowest threshold in the country</div>
+          </div>
+          <div style="background:#0A2F5E;padding:30px 28px">
+            <div style="font-family:Archivo,sans-serif;font-size:38px;font-weight:800;color:#00D165;letter-spacing:-0.03em;line-height:1">May 31</div>
+            <div style="color:rgba(255,255,255,0.78);font-size:14.5px;margin-top:8px;line-height:1.45">Annual report deadline in six of the seven states</div>
+          </div>
+          <div style="background:#0A2F5E;padding:30px 28px">
+            <div style="font-family:Archivo,sans-serif;font-size:38px;font-weight:800;color:#00D165;letter-spacing:-0.03em;line-height:1">7</div>
+            <div style="color:rgba(255,255,255,0.78);font-size:14.5px;margin-top:8px;line-height:1.45">States with packaging &amp; paper EPR on the books today</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1240px;margin:0 auto;padding:84px 32px 0">
+      <h2 style="font-family:Archivo,sans-serif;font-weight:700;font-size:clamp(28px,3.2vw,40px);letter-spacing:-0.025em;color:#0A2F5E;margin:0">Programs we cover</h2>
+      <p style="font-size:17.5px;line-height:1.6;color:#4A5A66;margin:16px 0 0;max-width:66ch;text-wrap:pretty">Packaging and paper EPR in all seven states that have it. Circular Action Alliance runs the program in six; Maine runs its own through a contracted stewardship organization.</p>
+      <div style="margin-top:34px;border:1px solid #E3DCCD;border-radius:12px;overflow:hidden;background:#fff">
+        <div style="display:grid;grid-template-columns:1.1fr 1fr 1.1fr;gap:0;background:#0A2F5E">
+          <div style="padding:15px 22px;font-family:Archivo,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.8)">State</div>
+          <div style="padding:15px 22px;font-family:Archivo,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.8)">Statute</div>
+          <div style="padding:15px 22px;font-family:Archivo,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.8)">Program administrator</div>
+        </div>
+        <sc-for list="{{ states }}" as="st" hint-placeholder-count="7">
+          <div style="display:grid;grid-template-columns:1.1fr 1fr 1.1fr;border-top:1px solid #EDE7DA" style-hover="background:#FAF8F3">
+            <div style="padding:17px 22px;font-size:16px;font-weight:600;color:#0A2F5E">{{ st.name }}</div>
+            <div style="padding:17px 22px;font-size:15.5px;color:#4A5A66">{{ st.law }}</div>
+            <div style="padding:17px 22px;font-size:15.5px;color:#4A5A66">{{ st.admin }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="max-width:1240px;margin:0 auto;padding:72px 32px 0">
+      <h2 style="font-family:Archivo,sans-serif;font-weight:700;font-size:clamp(26px,3vw,36px);letter-spacing:-0.025em;color:#0A2F5E;margin:0">Beyond packaging</h2>
+      <p style="font-size:17.5px;line-height:1.6;color:#4A5A66;margin:14px 0 0;max-width:66ch;text-wrap:pretty">Packaging is usually the first thing people hear about, but it's rarely the only one that applies. We'll check every regulated stream with you so nothing quietly slips through.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:26px">
+        <sc-for list="{{ streams }}" as="x" hint-placeholder-count="10">
+          <span style="padding:10px 18px;border:1px solid #D8CFBB;border-radius:100px;background:#fff;font-size:15px;font-weight:600;color:#0A2F5E">{{ x }}</span>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="max-width:1240px;margin:0 auto;padding:76px 32px 0">
+      <h2 style="font-family:Archivo,sans-serif;font-weight:700;font-size:clamp(26px,3vw,36px);letter-spacing:-0.025em;color:#0A2F5E;margin:0">How we work through it together</h2>
+      <p style="font-size:17.5px;line-height:1.6;color:#4A5A66;margin:14px 0 0;max-width:66ch;text-wrap:pretty">Four steps, in order. You'll always know where we are and what's next.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:32px">
+        <sc-for list="{{ deliverables }}" as="d" hint-placeholder-count="4">
+          <div style="background:#fff;border:1px solid #E7E0D1;border-radius:10px;padding:24px 24px 26px;display:flex;gap:16px;align-items:flex-start">
+            <span style="font-family:Archivo,sans-serif;font-size:14px;font-weight:800;color:#fff;background:#0A2F5E;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:0 0 28px">{{ d.n }}</span>
+            <div>
+              <div style="font-family:Archivo,sans-serif;font-size:17.5px;font-weight:700;color:#0A2F5E;line-height:1.25">{{ d.h }}</div>
+              <p style="font-size:15px;line-height:1.55;color:#4A5A66;margin:7px 0 0;text-wrap:pretty">{{ d.p }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="max-width:1240px;margin:0 auto;padding:76px 32px 0">
+      <h2 style="font-family:Archivo,sans-serif;font-weight:700;font-size:clamp(26px,3vw,36px);letter-spacing:-0.025em;color:#0A2F5E;margin:0">Ways we can work together</h2>
+      <p style="font-size:17.5px;line-height:1.6;color:#4A5A66;margin:14px 0 0;max-width:62ch;text-wrap:pretty">Nothing you have to squeeze into. Tell us where you're at and we'll suggest the shape that fits, whether that's an ongoing partnership or help with one filing.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px;margin-top:32px">
+        <sc-for list="{{ tiers }}" as="t" hint-placeholder-count="3">
+          <div style="background:{{ t.bg }};border:2px solid {{ t.border }};border-radius:14px;padding:32px 28px 30px;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;gap:10px;min-height:24px">
+              <div style="font-family:Archivo,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:{{ t.kickerColor }}">{{ t.kicker }}</div>
+            </div>
+            <div style="font-family:Archivo,sans-serif;font-size:25px;font-weight:700;color:{{ t.titleColor }};margin-top:10px;line-height:1.2">{{ t.title }}</div>
+            <div style="font-size:15.5px;color:{{ t.priceColor }};margin-top:10px;font-weight:600">{{ t.price }}</div>
+            <p style="font-size:15.5px;line-height:1.6;color:{{ t.bodyColor }};margin:14px 0 0;flex:1;text-wrap:pretty">{{ t.body }}</p>
+            <a href="#" onClick="{{ goContact }}" style="margin-top:24px;text-align:center;font-size:15px;font-weight:700;padding:13px 20px;border-radius:7px;background:{{ t.btnBg }};color:{{ t.btnColor }}" style-hover="opacity:0.85">Let's talk it through</a>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="background:#0F3E52;margin-top:80px">
+      <div style="max-width:1240px;margin:0 auto;padding:80px 32px">
+        <h2 style="font-family:Archivo,sans-serif;font-weight:700;font-size:clamp(26px,3vw,38px);letter-spacing:-0.025em;color:#fff;margin:0">Easy things to miss</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:34px">
+          <sc-for list="{{ mistakes }}" as="m" hint-placeholder-count="4">
+            <div style="border-left:3px solid #00D165;padding:4px 0 4px 20px">
+              <div style="font-family:Archivo,sans-serif;font-size:18.5px;font-weight:700;color:#fff;line-height:1.3">{{ m.h }}</div>
+              <p style="font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.8);margin:9px 0 0;text-wrap:pretty">{{ m.p }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:900px;margin:0 auto;padding:84px 32px">
+      <h2 style="font-family:Archivo,sans-serif;font-weight:700;font-size:clamp(26px,3vw,38px);letter-spacing:-0.025em;color:#0A2F5E;margin:0 0 28px">Common questions</h2>
+      <sc-for list="{{ faq }}" as="f" hint-placeholder-count="5">
+        <div style="border-top:1px solid #E3DCCD;padding:24px 0">
+          <div style="font-family:Archivo,sans-serif;font-size:19px;font-weight:700;color:#0A2F5E;line-height:1.3">{{ f.q }}</div>
+          <p style="font-size:16.5px;line-height:1.65;color:#4A5A66;margin:10px 0 0;text-wrap:pretty">{{ f.a }}</p>
+        </div>
+      </sc-for>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isProjects }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="position:relative;background:#0A2F5E;padding:100px 0 72px">
+      <img src="projects-hero.jpeg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.42" />
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,47,92,0.45),rgba(10,47,92,0.92))"></div>
+      <div style="position:relative;max-width:1240px;margin:0 auto;padding:0 32px">
+        <h1 style="font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(38px,5vw,64px);line-height:1.03;letter-spacing:-0.028em;color:#fff;margin:0">Past projects</h1>
+        <p style="font-size:19px;line-height:1.55;color:rgba(255,255,255,0.86);max-width:62ch;margin:18px 0 0;text-wrap:pretty">We're invested in every client's journey, and we stay connected long after a project ends. Every one of these started as a phone call about a deadline, a grant, or a number somebody needed defended.</p>
+      </div>
+    </section>
+    <section style="max-width:1240px;margin:0 auto;padding:72px 32px 96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:22px">
+      <sc-for list="{{ projects }}" as="pr" hint-placeholder-count="6">
+        <div style="background:#fff;border:1px solid #E7E0D1;border-radius:12px;overflow:hidden;display:flex;flex-direction:column">
+          <div style="background:#0A2F5E;padding:26px 26px 24px">
+            <div style="font-size:11.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#5FD9C0">{{ pr.tag }}</div>
+            <div style="font-family:Archivo,sans-serif;font-size:34px;font-weight:800;letter-spacing:-0.03em;color:#00D165;line-height:1.05;margin-top:12px">{{ pr.stat }}</div>
+            <div style="font-size:14.5px;color:rgba(255,255,255,0.75);margin-top:7px;line-height:1.4">{{ pr.outcome }}</div>
+          </div>
+          <div style="padding:26px 26px 28px;display:flex;flex-direction:column;flex:1">
+            <h3 style="font-family:Archivo,sans-serif;font-size:21px;font-weight:700;color:#0A2F5E;margin:0;line-height:1.25">{{ pr.title }}</h3>
+            <p style="font-size:15.5px;line-height:1.6;color:#4A5A66;margin:10px 0 0;flex:1;text-wrap:pretty">{{ pr.body }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="position:relative;background:#0A2F5E;padding:100px 0 72px">
+      <img src="contact-hero.jpeg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.4" />
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,47,92,0.5),rgba(10,47,92,0.92))"></div>
+      <div style="position:relative;max-width:1240px;margin:0 auto;padding:0 32px">
+        <h1 style="font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(38px,5vw,64px);line-height:1.03;letter-spacing:-0.028em;color:#fff;margin:0">Let's find something that works for you.</h1>
+        <p style="font-size:19px;line-height:1.55;color:rgba(255,255,255,0.86);max-width:62ch;margin:18px 0 0;text-wrap:pretty">Four ways to start. Pick whichever is least effort for you. They all land in the same inbox.</p>
+      </div>
+    </section>
+
+    <section style="max-width:1240px;margin:0 auto;padding:64px 32px 40px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px">
+        <sc-for list="{{ contactWays }}" as="c" hint-placeholder-count="4">
+          <a href="{{ c.href }}" target="{{ c.target }}" rel="noopener" style="background:#fff;border:1px solid #E7E0D1;border-radius:12px;padding:28px 26px;display:block" style-hover="border-color:#00A24A">
+            <div style="font-family:Archivo,sans-serif;font-size:18.5px;font-weight:700;color:#0A2F5E;line-height:1.25">{{ c.h }}</div>
+            <p style="font-size:15px;line-height:1.55;color:#4A5A66;margin:9px 0 0">{{ c.p }}</p>
+            <div style="font-size:14.5px;font-weight:700;color:#00A24A;margin-top:14px">{{ c.cta }} →</div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="max-width:1240px;margin:0 auto;padding:20px 32px 96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:48px;align-items:start">
+      <div>
+        <h2 style="font-family:Archivo,sans-serif;font-weight:700;font-size:30px;letter-spacing:-0.025em;color:#0A2F5E;margin:0">Send a scoping note</h2>
+        <p style="font-size:16.5px;line-height:1.6;color:#4A5A66;margin:12px 0 26px;text-wrap:pretty">The more you tell us up front, the closer the first number will be to the final one.</p>
+        <div ref="{{ formRef }}" style="display:flex;flex-direction:column;gap:16px">
+          <sc-for list="{{ fields }}" as="fl" hint-placeholder-count="4">
+            <label style="display:flex;flex-direction:column;gap:7px">
+              <span style="font-size:13.5px;font-weight:700;color:#0A2F5E;letter-spacing:0.01em">{{ fl.label }}</span>
+              <input type="text" placeholder="{{ fl.ph }}" style="font-family:'Public Sans',sans-serif;font-size:16px;padding:13px 15px;border:1px solid #D8CFBB;border-radius:7px;background:#fff;color:#152532;outline:none" style-focus="border-color:#00A24A" />
+            </label>
+          </sc-for>
+          <label style="display:flex;flex-direction:column;gap:7px">
+            <span style="font-size:13.5px;font-weight:700;color:#0A2F5E">What are you facing?</span>
+            <textarea rows="5" placeholder="A filing deadline, an investor questionnaire, a utility bill that keeps climbing…" style="font-family:'Public Sans',sans-serif;font-size:16px;padding:13px 15px;border:1px solid #D8CFBB;border-radius:7px;background:#fff;color:#152532;outline:none;resize:vertical" style-focus="border-color:#00A24A"></textarea>
+          </label>
+          <button type="button" onClick="{{ submit }}" style="font-family:'Public Sans',sans-serif;margin-top:6px;font-size:16px;font-weight:700;padding:15px 28px;border:none;border-radius:7px;background:#00A24A;color:#fff;cursor:pointer;align-self:flex-start" style-hover="background:#0A2F5E">{{ submitLabel }}</button>
+        </div>
+      </div>
+      <div style="background:#EFE9DC;border-radius:12px;padding:34px 32px">
+        <div style="font-family:Archivo,sans-serif;font-size:20px;font-weight:700;color:#0A2F5E">Direct</div>
+        <div style="margin-top:16px;display:flex;flex-direction:column;gap:12px;font-size:16.5px">
+          <a href="mailto:Garrett@eddyoutenv.com" style="color:#147C8B;font-weight:600">Garrett@eddyoutenv.com</a>
+          <a href="https://www.linkedin.com/company/eddy-out-environmental/" style="color:#147C8B;font-weight:600">LinkedIn: Eddy Out Environmental</a>
+        </div>
+        <div style="height:1px;background:#DCD3BF;margin:26px 0"></div>
+        <div style="font-family:Archivo,sans-serif;font-size:20px;font-weight:700;color:#0A2F5E">Response time</div>
+        <p style="font-size:16px;line-height:1.6;color:#4A5A66;margin:10px 0 0">Same business day, usually within a couple of hours. If you're inside 30 days of a filing deadline, say so in the subject line and we'll move you up.</p>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <footer style="background:#08243F;color:rgba(255,255,255,0.72)">
+    <div style="max-width:1240px;margin:0 auto;padding:64px 32px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px">
+      <div>
+        <div style="background:#fff;border-radius:8px;padding:14px 18px;display:inline-block">
+          <img src="eddy-out-logo.png" alt="Eddy Out Sustainability Consulting" style="height:40px;width:auto;display:block" />
+        </div>
+        <p style="font-size:15px;line-height:1.6;margin:18px 0 0;max-width:34ch">Eco-smart growth for cost-effective success. Emissions, EPR, and multi-year strategy for companies doing the right thing.</p>
+      </div>
+      <sc-for list="{{ footerCols }}" as="col" hint-placeholder-count="3">
+        <div>
+          <div style="font-family:Archivo,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.11em;text-transform:uppercase;color:#5FD9C0">{{ col.head }}</div>
+          <div style="display:flex;flex-direction:column;gap:11px;margin-top:16px">
+            <sc-for list="{{ col.links }}" as="l" hint-placeholder-count="3">
+              <a href="#" onClick="{{ l.go }}" style="font-size:15.5px;color:rgba(255,255,255,0.78)" style-hover="color:#fff">{{ l.label }}</a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px 40px">
+      <div style="border-top:1px solid rgba(255,255,255,0.14);padding-top:22px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:14px;color:rgba(255,255,255,0.55)">
+        <span>© 2026 Eddy Out Sustainability Consulting</span>
+        <a href="mailto:Garrett@eddyoutenv.com" style="color:rgba(255,255,255,0.55)" style-hover="color:#fff">Garrett@eddyoutenv.com</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  formRef = React.createRef();
+  state = { page: 'home', sent: false, band: 0, bandFade: 1 };
+
+  bands = [
+    { title: 'EPR compliance', items: [
+      { figure: '7', label: 'states with packaging and paper EPR law on the books today' },
+      { figure: 'May 31', label: 'annual report deadline in six of the seven states' },
+      { figure: '$1M', label: "California's revenue floor, measured on California sales alone, the lowest in the country" }
+    ]},
+    { title: 'GHG reporting', items: [
+      { figure: '3', label: 'scopes, all of them accounted for, including the Scope 3 work most inventories skip' },
+      { figure: '99.58%', label: 'CO₂ reduction per ton we documented for recycled versus virgin steel shot' },
+      { figure: 'Fair scope', label: 'agreed with you before we start, and sized to what your organization needs' }
+    ]},
+    { title: 'Multi-year analysis', items: [
+      { figure: '3–5 yrs', label: 'of trend from a defensible baseline. One year of data tells you nothing' },
+      { figure: 'Every action', label: 'in the roadmap carries a capital cost, an annual saving, and a payback period' },
+      { figure: '2032', label: 'how far our compliance calendars run, so milestones land in a budget cycle' }
+    ]},
+    { title: 'Vendor compliance', items: [
+      { figure: 'REI', label: 'direct experience completing Product Impact Assessments' },
+      { figure: 'Once', label: 'is how many times you should have to build product-level data for buyers' },
+      { figure: 'Same day', label: 'reply when a retailer questionnaire lands with a short fuse' }
+    ]}
+  ];
+
+  componentDidMount() { this.startTimers(); }
+
+  startTimers() {
+    clearInterval(this.bandTimer);
+    clearTimeout(this.bandFadeTimer);
+    this.bandTimer = setInterval(() => {
+      this.setState({ bandFade: 0 });
+      this.bandFadeTimer = setTimeout(() => {
+        this.setState(s => ({ band: ((s.band || 0) + 1) % this.bands.length, bandFade: 1 }));
+      }, 350);
+    }, 6000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.bandTimer);
+    clearTimeout(this.bandFadeTimer);
+  }
+
+  jumpBand(i) {
+    return () => {
+      this.startTimers();
+      this.setState({ band: i, bandFade: 1 });
+    };
+  }
+
+  go(p) {
+    return (e) => {
+      if (e && e.preventDefault) e.preventDefault();
+      this.setState({ page: p });
+      if (typeof window !== 'undefined') window.scrollTo(0, 0);
+    };
+  }
+
+  renderVals() {
+    const page = this.state.page;
+    const bi = this.state.band || 0;
+    const b = this.bands[bi];
+    const nav = [
+      ['home', 'Home'], ['who', 'Who We Are'], ['services', 'Services'],
+      ['epr', 'EPR Reporting'], ['projects', 'Projects'], ['contact', 'Contact']
+    ];
+
+    return {
+      isHome: page === 'home', isWho: page === 'who', isServices: page === 'services',
+      isEpr: page === 'epr', isProjects: page === 'projects', isContact: page === 'contact',
+      goHome: this.go('home'), goWho: this.go('who'), goServices: this.go('services'),
+      goEpr: this.go('epr'), goProjects: this.go('projects'), goContact: this.go('contact'),
+
+      bandTitle: b.title,
+      bandOpacity: this.state.bandFade === 0 ? 0 : 1,
+      bandItems: b.items.map((x, i) => ({
+        figure: x.figure, label: x.label,
+        padLeft: i === 0 ? '0' : '34px',
+        border: i === b.items.length - 1 ? 'none' : '1px solid rgba(255,255,255,0.14)'
+      })),
+      bandDots: this.bands.map((x, i) => ({
+        go: this.jumpBand(i), label: x.title,
+        isActive: i === bi, isInactive: i !== bi
+      })),
+
+      navItems: nav.map(([k, label]) => ({
+        label, go: this.go(k), color: page === k ? '#0A2F5E' : '#4A5A66'
+      })),
+
+      pillars: [
+        { kicker: 'Measure', title: 'Cost-effective GHG reporting', body: 'Scope 1, 2, and 3 inventories built to the GHG Protocol and scaled to your organization. You get the numbers, the methodology, and a plain-English summary your board can read in five minutes.', link: 'See what\u2019s included', go: this.go('services') },
+        { kicker: 'Plan', title: 'Multi-year sustainability analysis', body: 'A verified baseline year, three-to-five-year trend lines, and a reduction roadmap where every action carries a payback period. We re-inventory annually so the trend is real, not restated.', link: 'How it works', go: this.go('services') },
+        { kicker: 'Prove', title: 'Cost & energy savings documentation', body: 'The paperwork that turns an efficiency project into money: utility-grade savings memos, grant and rebate applications, green tax credit filings, and audit-ready backup.', link: 'What you get', go: this.go('services') },
+        { kicker: 'Comply', title: 'EPR reporting, all seven states', body: 'Obligation screening, packaging inventories, registration and annual filings, PRO invoice validation, and a compliance calendar out to 2032. Packaging plus every other regulated stream.', link: 'Full EPR breakdown', go: this.go('epr') },
+        { kicker: 'Supply', title: 'Vendor & retailer compliance', body: 'When a retailer sends you a Product Impact Assessment, the deadline is short and the questions are specific. We have direct experience with REI\u2019s PIAs and answer them with defensible data, not guesses.', link: 'How we handle PIAs', go: this.go('services') }
+      ],
+
+      whyPoints: [
+        'Fair, transparent scoping, agreed before we start',
+        'Every recommendation carries a dollar figure and a payback period',
+        'One senior consultant on your account, start to finish',
+        'A long-term partnership or a hand with one project, whatever fits'
+      ],
+
+      results: [
+        { stat: '99.58%', label: 'lower CO\u2082 per ton using recycled steel shot instead of virgin', who: 'Wisdom Environmental' },
+        { stat: '7 states', label: 'secured approval to legally recycle K061 electric arc furnace dust', who: 'Patriot ERD' },
+        { stat: '5 years', label: 'of emissions data and trend analysis in one assessment', who: 'Spark R&D' },
+        { stat: 'BUILT', label: 'grant application supported with a full energy efficiency audit', who: 'HRDC Bozeman' }
+      ],
+
+
+      services: [
+        {
+          bg: '#FAF8F3', kicker: 'Emissions', title: 'Greenhouse gas reporting', cta: 'Master your emissions', go: this.go('contact'),
+          body: 'A full picture of what your operation emits, calculated properly and scoped to a company your size. Built to the GHG Protocol so it holds up with customers, lenders, and regulators.',
+          items: [
+            { n: '01', h: 'GHG assessment', p: 'Comprehensive emissions calculation across your operation, with detailed reporting and actionable reduction strategies.' },
+            { n: '02', h: 'Scope 1 & 2 reporting', p: 'Direct and purchased-energy emissions, broken down by source, with an efficiency action plan that cuts cost alongside carbon.' },
+            { n: '03', h: 'Scope 3 supply chain analysis', p: 'Hotspot identification across your upstream chain, plus supplier engagement strategies and workshops to actually move the number.' },
+            { n: '04', h: 'Scope 3 production emissions', p: 'Process-level assessment with tailored operational efficiency recommendations and ongoing progress tracking.' }
+          ]
+        },
+        {
+          bg: '#F5F1E8', kicker: 'Strategy', title: 'Multi-year sustainability analysis', cta: 'Build your roadmap', go: this.go('contact'),
+          body: 'One year of data tells you nothing. We set a defensible baseline, track it consistently, and turn the trend into a reduction plan that lines up with your capital cycle and your margin.',
+          items: [
+            { n: '01', h: 'Baseline year inventory', p: 'A verified starting point with documented methodology, so every future year is comparable rather than re-litigated.' },
+            { n: '02', h: 'Three-to-five-year trend analysis', p: 'Normalized intensity metrics against production, revenue, or square footage, so growth doesn\u2019t look like backsliding.' },
+            { n: '03', h: 'Reduction roadmap with paybacks', p: 'Sequenced actions, each with capital cost, annual savings, payback period, and tonnes avoided. Sorted by return, so the first thing you do is the thing that pays.' },
+            { n: '04', h: 'Annual re-inventory & progress reporting', p: 'We re-run the numbers every year, restate cleanly when your footprint changes, and keep the story straight for customers and lenders.' },
+            { n: '05', h: 'Trend & regulatory horizon scanning', p: 'What\u2019s coming in your states and your sector, and what it will cost you to be ready versus caught out.' }
+          ]
+        },
+        {
+          bg: '#FAF8F3', kicker: 'Documentation', title: 'Cost & energy savings documentation', cta: 'Elevate your documents', go: this.go('contact'),
+          body: 'The analysis is only worth what you can prove. We write the memos, applications, and audit files that convert efficiency work into cash and credibility.',
+          items: [
+            { n: '01', h: 'Energy & cost savings memos', p: 'Measurement-and-verification style documentation of what a project saved, in kWh, therms, and dollars, the format lenders and boards accept.' },
+            { n: '02', h: 'Grant writing & application walkthrough', p: 'Research, proposal development, submission, and progress monitoring. We stay on it until the money lands.' },
+            { n: '03', h: 'Green tax credits & subsidies', p: 'Identifying and filing for the incentives you already qualify for: 179D, 48C, utility rebates, state programs.' },
+            { n: '04', h: 'Sustainable procurement strategy', p: 'Purchasing standards and supplier criteria that cut embedded emissions and spend at the same time.' },
+            { n: '05', h: 'Certification support', p: 'Third-party environmental certifications, start to finish, so the recognition matches the work you already did.' },
+            { n: '06', h: 'University STARS credit support', p: 'Practice assessment, data gathering, and improvement strategy to raise your institutional rating.' }
+          ]
+        },
+        {
+          bg: '#F5F1E8', kicker: 'Supply chain', title: 'Vendor & retailer compliance', cta: 'Get help with a vendor request', go: this.go('contact'),
+          body: 'Your buyers are now your regulators. Retailers are pushing sustainability requirements down to their vendors, and the questionnaires arrive with tight deadlines and specific data demands. We have direct experience with REI\u2019s Product Impact Assessments and answer them properly.',
+          items: [
+            { n: '01', h: 'REI Product Impact Assessments', p: 'Direct experience completing PIAs. We know what the questions are actually asking for and where brands lose points on incomplete data rather than poor performance.' },
+            { n: '02', h: 'Retailer & buyer questionnaires', p: 'Sustainability scorecards, supplier surveys, and vendor onboarding requirements answered consistently across every account, so your numbers don\u2019t contradict each other.' },
+            { n: '03', h: 'Product-level footprinting', p: 'The per-product carbon and material data these programs increasingly require, built once and reusable across every buyer who asks.' },
+            { n: '04', h: 'Cascading it to your own suppliers', p: 'When the request depends on data you don\u2019t hold, we run the upstream outreach: templates, follow-up, and a workable fallback when a supplier won\u2019t engage.' }
+          ]
+        },
+        {
+          bg: '#FAF8F3', kicker: 'Compliance', title: 'EPR reporting', cta: 'See the full EPR program', go: this.go('epr'),
+          body: 'Extended producer responsibility in all seven states with packaging law today, plus batteries, paint, mattresses, carpet, pharmaceuticals, electronics, textiles, and solar. Screened, registered, filed, and calendared.',
+          items: [
+            { n: '01', h: 'Obligation determination', p: 'Whether you\u2019re a covered producer, in which states, for which streams, in writing, with the reasoning shown.' },
+            { n: '02', h: 'Packaging inventory & taxonomy crosswalk', p: 'Component-level inventory mapped across every state\u2019s category list, because no two lists agree.' },
+            { n: '03', h: 'Registration & annual filing', p: 'We file with Circular Action Alliance and Maine\u2019s stewardship organization on your behalf, ahead of May 31.' },
+            { n: '04', h: 'Fee modeling & invoice validation', p: 'Forecast what you\u2019ll owe, then check the PRO\u2019s invoice against your own data before you pay it.' }
+          ]
+        }
+      ],
+
+      states: [
+        { name: 'California', law: 'SB 54', admin: 'Circular Action Alliance' },
+        { name: 'Colorado', law: 'HB22-1355', admin: 'Circular Action Alliance' },
+        { name: 'Maine', law: 'LD 1541', admin: 'State-run, contracted stewardship org' },
+        { name: 'Maryland', law: 'SB 901', admin: 'Circular Action Alliance' },
+        { name: 'Minnesota', law: 'PWCRA', admin: 'Circular Action Alliance' },
+        { name: 'Oregon', law: 'SB 582', admin: 'Circular Action Alliance' },
+        { name: 'Washington', law: 'SB 5284', admin: 'Circular Action Alliance' }
+      ],
+
+      streams: ['Packaging & paper', 'Batteries', 'Paint', 'Mattresses', 'Carpet', 'Pharmaceuticals', 'Electronics', 'Textiles (CA SB 707)', 'Solar panels', 'Recycled-content minimums', 'PFAS-in-packaging bans'],
+
+      deliverables: [
+        { n: '1', h: 'Figure out what applies to you', p: 'Together we work out which states, which material streams, and which part of your business actually carries the obligation, in writing, so there\u2019s no guessing.' },
+        { n: '2', h: 'Build the packaging picture', p: 'We help you gather materials and weights, map them to each state\u2019s categories, and fill the gaps. Most of the lift is ours; we\u2019ll tell you exactly what we need from you.' },
+        { n: '3', h: 'File on your behalf', p: 'Registrations and annual reports submitted ahead of every deadline, with a cost forecast so the fees land in your budget rather than as a surprise.' },
+        { n: '4', h: 'Stay compliant year to year', p: 'We check your program invoices, keep your audit file ready, and maintain a calendar of what\u2019s coming, so next year is routine instead of a scramble.' }
+      ],
+
+      tiers: [
+        { kicker: 'Just getting oriented', title: 'Readiness check', price: 'About six weeks, start to finish', body: 'We work out what applies to you, what data you already have, and what it\u2019s likely to cost. You come out of it knowing where you stand, whether or not you keep working with us.', bg: '#fff', border: '#E3DCCD', kickerColor: '#8A94A0', titleColor: '#0A2F5E', priceColor: '#147C8B', bodyColor: '#4A5A66', btnBg: '#0A2F5E', btnColor: '#fff' },
+        { kicker: 'Where most people land', title: 'Step by step', price: 'Assess first, then decide together', body: 'Start with the readiness check, see the real scope, then decide together whether to keep going. No commitment until you know what you\u2019re dealing with.', bg: '#0A2F5E', border: '#00A24A', kickerColor: '#00D165', titleColor: '#fff', priceColor: '#5FD9C0', bodyColor: 'rgba(255,255,255,0.85)', btnBg: '#00A24A', btnColor: '#fff' },
+        { kicker: 'Off your plate', title: 'We handle the cycle', price: 'Ongoing, year to year', body: 'Registrations, annual filings, invoice checks, and your calendar across every state you sell into. You hear from us when something needs your signature, and any time you want a status update.', bg: '#fff', border: '#E3DCCD', kickerColor: '#8A94A0', titleColor: '#0A2F5E', priceColor: '#147C8B', bodyColor: '#4A5A66', btnBg: '#0A2F5E', btnColor: '#fff' }
+      ],
+
+      mistakes: [
+        { h: 'Registering for packaging and stopping', p: 'Packaging is the loudest obligation, not the only one. Batteries in a product, paint in a kit, textiles in California. Each is its own filing, and none of them are covered by your packaging registration.' },
+        { h: 'Assuming the threshold is national revenue', p: 'California measures against California sales alone, at $1,000,000, the lowest floor in the country. Plenty of companies that assumed they were too small are covered.' },
+        { h: 'Reporting SKU-level instead of component-level', p: 'State category lists are built on materials and weights. A SKU-level submission fails the crosswalk and gets kicked back, usually with the deadline days away.' },
+        { h: 'Paying the PRO invoice without checking it', p: 'Fee schedules are complex and invoices are generated from your own submitted data. If the data had an error, so does the bill, and nobody refunds you unprompted.' }
+      ],
+
+      faq: [
+        { q: 'Am I a covered producer?', a: 'Usually the brand owner whose name is on the package, but it can be the importer or the first distributor depending on the state and your structure. The obligation determination memo answers this in writing, and it\u2019s the first thing we do.' },
+        { q: 'What if I only sell into one of the seven states?', a: 'Then you file in one state. We scope to your actual footprint, and we tell you which states you\u2019re likely to trip into as you grow so the next one isn\u2019t a fire drill.' },
+        { q: 'We already registered with Circular Action Alliance. Do we still need you?', a: 'Registering is really only the third of the four steps. What you report, what you\u2019re billed, and what you can show a regulator later are where the cost and the risk actually sit. Plenty of the people we work with come to us already registered, and we pick up from there.' },
+        { q: 'How much does this cost?', a: 'It depends on how complex your packaging is and how many states you sell into, so we scope it with you first and agree on it before any work starts. Whether that turns into a long-term partnership or help with a single filing, we\u2019ll find something fair that fits.' },
+        { q: 'How far ahead should we start?', a: 'Six months before your first May 31 is comfortable. Three is tight but doable. Under thirty days, call anyway. Tell us in the subject line and we\u2019ll move you up the queue.' }
+      ],
+
+      projects: [
+        { tag: 'Energy efficiency', stat: 'BUILT', outcome: 'grant application supported', title: 'Energy efficiency audits for HRDC', body: 'A full energy efficiency audit and analysis for the Human Resource Development Council in Bozeman, built to support their BUILT grant application for nonprofit efficiency upgrades. We produced the data the application needed, and the improvements will cut both operating cost and footprint.' },
+        { tag: 'Multi-year analysis', stat: '5 years', outcome: 'baseline through trend, with a ranked roadmap', title: 'Five-year assessment for Spark R&D', body: 'A five-year emissions and sustainability assessment for the Bozeman splitboard binding maker: baseline through trend, with reduction opportunities ranked against the realities of a small manufacturer\u2019s capital budget.' },
+        { tag: 'Scope 3', stat: 'Aluminium', outcome: 'pathway-by-pathway comparison for customers', title: 'Scope 3 comparative analysis: Constellium', body: 'Comparative Scope 3 analysis for aluminium production, quantifying the difference between material pathways so customers can see the emissions consequence of what they specify.' },
+        { tag: 'Scope 3', stat: '99.58%', outcome: 'lower CO\u2082 per ton vs. virgin steel shot', title: 'Wisdom Environmental steel shot emissions', body: 'A data-driven comparison of recycled versus virgin steel shot production for an industrial recycling leader. The report gives their customers a defensible number to put in their own Scope 3 inventories.' },
+        { tag: 'Compliance', stat: '7 states', outcome: 'approved K061 recycling, Kentucky first, 2024', title: 'K061 legal compliance: Patriot ERD', body: 'Analytical writing and negotiation with state environmental agencies to find legal recycling pathways for electric arc furnace dust. Kentucky was first to fully approve K061 recycling in early 2024.' },
+        { tag: 'GHG inventory', stat: '2022', outcome: 'township-wide inventory, rewritten and published', title: 'Big Sky greenhouse gas inventory', body: 'Updated and rewrote the township GHG inventory with the Big Sky Sustainability Network: Scope 1 and 2 across residential and commercial sectors, plus transportation and solid waste.' }
+      ],
+
+      contactWays: [
+        { h: 'Book a free consult', p: 'Thirty minutes, no charge. Leave knowing what\u2019s actually required of you.', cta: 'Pick a time', href: 'https://calendar.app.google/osjfw7Vs7TE8o1cQA', target: '_blank' },
+        { h: 'Email Garrett', p: 'Straight to the principal. Same-day reply on business days.', cta: 'Garrett@eddyoutenv.com', href: 'mailto:Garrett@eddyoutenv.com' },
+        { h: 'Request a GHG inventory quote', p: 'Tell us your facilities and fuel types and we\u2019ll come back with a scope and a number.', cta: 'Get a quote', href: 'mailto:Garrett@eddyoutenv.com?subject=GHG%20inventory%20quote' },
+        { h: 'EPR obligation screen', p: 'Not sure whether you\u2019re covered? We\u2019ll tell you before you spend anything.', cta: 'Screen my company', href: 'mailto:Garrett@eddyoutenv.com?subject=EPR%20obligation%20screen' }
+      ],
+
+      fields: [
+        { label: 'Name', ph: 'Jane Doe' },
+        { label: 'Company', ph: 'Acme Manufacturing' },
+        { label: 'Email', ph: 'jane@acme.com' },
+        { label: 'States you sell into', ph: 'CA, OR, WA' }
+      ],
+
+      submitLabel: this.state.sent ? 'Thanks, we\u2019ll be in touch' : 'Send it over',
+      formRef: this.formRef,
+      submit: () => {
+        const root = this.formRef.current;
+        const parts = [];
+        if (root) root.querySelectorAll('input, textarea').forEach((el) => {
+          const lbl = el.parentElement && el.parentElement.querySelector('span');
+          parts.push((lbl ? lbl.textContent : 'Field') + ':\n' + (el.value || '(not given)'));
+        });
+        window.location.href = 'mailto:Garrett@eddyoutenv.com?subject='
+          + encodeURIComponent('Scoping note from eddyoutenv.com')
+          + '&body=' + encodeURIComponent(parts.join('\n\n'));
+        this.setState({ sent: true });
+      },
+
+      footerCols: [
+        { head: 'About', links: [{ label: 'Who We Are', go: this.go('who') }, { label: 'Our Team', go: this.go('who') }] },
+        { head: 'Our Work', links: [{ label: 'Services', go: this.go('services') }, { label: 'EPR Reporting', go: this.go('epr') }, { label: 'Past Projects', go: this.go('projects') }] },
+        { head: 'Stay in Touch', links: [{ label: 'Contact', go: this.go('contact') }, { label: 'Book a consult', go: this.go('contact') }] }
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>
